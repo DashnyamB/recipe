@@ -1,5 +1,6 @@
 require("@babel/polyfill");
 import axios from "axios";
+
 export default class Search {
   constructor(query) {
     this.query = query;
@@ -13,7 +14,7 @@ export default class Search {
 
       return this.result;
     } catch (error) {
-      alert("Асуудал гарлаа : " + error);
+      console.log("Асуудал гарлаа : " + error);
     }
   }
 }
