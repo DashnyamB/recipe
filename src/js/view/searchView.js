@@ -31,6 +31,25 @@ export const clearSearchResult = () => {
   elements.searchResultList.innerHTML = " ";
 };
 export const getInput = () => elements.searchInput.value;
-export const renderRecipes = (recipes) => {
-  recipes.forEach(renderRecipe);
+export const renderRecipes = (recipes, currentPage = 1, resPerPage = 10) => {
+  // хайлтын үр дүнг хуудаслаж үзүүлэх
+  // page = 2 байвал start нь 10, end = 20 болж байна
+  const start = (currentPage - 1) * resPerPage;
+  const end = currentPage * resPerPage;
+
+  recipes.slice(start, end).forEach(renderRecipe);
+  // Хуудаслалтуудыг гаргаж ирэх
+  const totalPages = Math.ceil(repices / resPerPage);
+  renderButtons(currentPage, totalPages);
+};
+const renderButtons = (currentPage, totalPages) => {
+  let button;
+
+  if (currentPage === 1 && totalPages > 1) {
+    //1-р хуудсан дээр дээр байна 2-р хуудас гэдэг товч гаргана
+  } else if (currentPage < totalPages) {
+    // өмнөх болон дараачийн хуудасруу шилжих товчуудыг үзүүл
+  } else if (currentPage === totalPages) {
+    // хамгийн сүүлийн хуудас дээр байна. Өмнөхрүү шилжүүлэх товчийг үзүүлнэ.
+  }
 };
